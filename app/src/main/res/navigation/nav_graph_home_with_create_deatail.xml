@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.alish.navigationflowsample.presentation.ui.fragments.main.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home"  >
+
+        <action
+            android:id="@+id/action_home_to_detail"
+            app:destination="@id/HomeDetailFragment" />
+
+        <action
+            android:id="@+id/action_home_to_create"
+            app:destination="@id/HomeCreateFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/HomeDetailFragment"
+        android:name="com.alish.navigationflowsample.presentation.ui.fragments.main.home.HomeDetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_home_detail">
+
+        <action
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_update_to_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/HomeCreateFragment"
+        tools:layout="@layout/fragment_home_create"
+        android:name="com.alish.navigationflowsample.presentation.ui.fragments.main.home.HomeCreateFragment"
+        android:label="Create">
+
+        <action
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_create_to_home"
+            app:destination="@id/navigation_home" />
+
+    </fragment>
+
+
+</navigation>
