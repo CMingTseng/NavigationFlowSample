@@ -13,17 +13,10 @@ import com.alish.navigationflowsample.presentation.base.BaseFlowFragment
 class MainFlowFragment : BaseFlowFragment(
     R.layout.flow_fragment_main, R.id.nav_host_fragment_main
 ) {
-
     private val binding by viewBinding(FlowFragmentMainBinding::bind)
-    private lateinit var appBarConfiguration: AppBarConfiguration
     override fun setupNavigation() {
-        Log.e("jjj","Show navController graph  ${navController.graph}")
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        requireActivity()?.let { fa ->
-            (fa as AppCompatActivity)?.let {
-                it.setSupportActionBar(binding.toolbar)
-                NavigationUI.setupActionBarWithNavController(it, navController, appBarConfiguration)
-            }
-        }
+        binding.toolbar.setupWithNavController(
+            navController, AppBarConfiguration(navController.graph)
+        )
     }
 }
